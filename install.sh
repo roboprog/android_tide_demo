@@ -1,7 +1,7 @@
 #Install the apk
 
 #cd into the home dir - this way it works when run from inside vim or any other folder
-cd ~/system/src/demo_android/
+cd ~/proj/adhd
 
 #Remove the Old
 if [ -f /sdcard/demo_android_signed.apk ];then

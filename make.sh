@@ -3,14 +3,14 @@
 #Build script
 
 #cd into the home dir - this way it works when run from inside vim or any other folder
-cd ~/system/src/demo_android/
+cd ~/proj/adhd
 
 #Clean up
 rm -rf build
 rm -rf dist
 
-echo TO BE CONTINUED
-exit 0
+# echo TO BE CONTINUED
+# exit 0
 
 #create the needed directories
 mkdir -m 770 -p dist
