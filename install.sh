@@ -6,16 +6,16 @@
 cd ~/proj/adhd
 
 #Remove the Old
-if [ -f /sdcard/demo_android_signed.apk ];then
-	rm /sdcard/demo_android_signed.apk
+if [ -f /sdcard/adhd_signed.apk ];then
+	rm /sdcard/adhd_signed.apk
 fi
 
 #Only works if APK is on the sdcard
-cp ./dist/demo_android_signed.apk /sdcard/
+cp ./dist/adhd_signed.apk /sdcard/
 
 #Now try and view it..
 am start \
 	--user 0 \
 	-a android.intent.action.VIEW \
 	-t application/vnd.android.package-archive \
-	-d file:///sdcard/demo_android_signed.apk
+	-d file:///sdcard/adhd_signed.apk

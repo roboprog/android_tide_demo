@@ -51,7 +51,7 @@ echo Now convert to dex format
 dx --dex \
 	--verbose \
 	--no-strict \
-	--output=../demo_android.dex \
+	--output=../adhd.dex \
 	com \
 	../../libs/demolib.jar
 
@@ -59,11 +59,11 @@ dx --dex \
 cd ../..
 
 #And finally - create the .apk
-apkbuilder ./dist/demo_android.apk -v -u -z ./build/resources.res -f ./build/demo_android.dex 
+apkbuilder ./dist/adhd.apk -v -u -z ./build/resources.res -f ./build/adhd.dex 
 
 #And now sign it
 cd dist
-signer demo_android.apk demo_android_signed.apk
+signer adhd.apk adhd_signed.apk
 
 cd ..
 
