@@ -3,7 +3,7 @@
  * and open the template in the editor.
  */
 
-package org.me.androiddemo;
+package com.roboprogs.adhd;
 
 import android.app.Activity;
 import android.os.Bundle;
