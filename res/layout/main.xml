@@ -26,6 +26,7 @@
 		android:padding="3mm"
 	/>
     <TextView
+		android:id="@+id/busy_text"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
 		android:background="#DDDDDD"

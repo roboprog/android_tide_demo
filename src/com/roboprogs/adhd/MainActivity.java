@@ -8,6 +8,7 @@ package com.roboprogs.adhd;
 import android.app.Activity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.TextView;
 
 import org.library.*;
 
@@ -46,7 +47,11 @@ class					MainActivity
 		View			unused
 		)
 		{
+		TextView		text;
+
 		this.btnClicks++;
+		text = (TextView) findViewById( R.id.busy_text);
+		text.setText( "Click count: " + this.btnClicks);
 		}  // _____________________________________________
 
 	}  // =================================================
