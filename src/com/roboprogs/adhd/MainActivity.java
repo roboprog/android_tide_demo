@@ -7,6 +7,7 @@ package com.roboprogs.adhd;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.view.View;
 
 import org.library.*;
 
@@ -17,6 +18,10 @@ public
 class					MainActivity
 	extends				Activity
 	{
+
+	/** count the button clicks/presses */
+	private
+	int					btnClicks = 0;
 
     /** Called when the activity is first created. */
     @Override
@@ -29,6 +34,19 @@ class					MainActivity
         super.onCreate( icicle);
 
         setContentView( R.layout.main);
+		}  // _____________________________________________
+
+	/**
+	 * Count each time button is clicked/pressed.
+	 *  (should be connected to event handler via layout XML)
+	 */
+	public
+	void				countClicks
+		(
+		View			unused
+		)
+		{
+		this.btnClicks++;
 		}  // _____________________________________________
 
 	}  // =================================================

@@ -16,6 +16,7 @@
 		android:layout_width="wrap_content"
 		android:text="Click me!"
 		android:padding="3mm"
+		android:onClick="countClicks"
 	/>
 	<SeekBar
 		android:layout_height="wrap_content"
