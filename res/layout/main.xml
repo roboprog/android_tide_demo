@@ -2,10 +2,23 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="fill_parent"
-    android:layout_height="fill_parent" >
+    android:layout_height="fill_parent"
+	android:padding="3mm"
+>
     <TextView
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:text="This space for rent!  Offer good until I forget"
+		android:padding="3mm"
+	/>
+	<Button
+		android:layout_height="wrap_content"
+		android:layout_width="wrap_content"
+		android:text="Click me!"
+		android:padding="3mm"
+	/>
 	/>
 </LinearLayout>
+<!--
+vim: ts=4 sw=4
+-->
