@@ -11,20 +11,28 @@ import android.os.Bundle;
 import org.library.*;
 
 /**
- *
- * @author Spartacus Rex
+ * Event handlers for Busy Box.
  */
-public class MainActivity extends Activity {
+public
+class					MainActivity
+	extends				Activity
+	{
 
     /** Called when the activity is first created. */
     @Override
-    public void onCreate(Bundle icicle) {
-        super.onCreate(icicle);
-        // ToDo add your GUI initialization code here
-        setContentView(R.layout.main);
-	
-		String test = libfunc.getMessage();
+    public
+	void				onCreate
+		(
+		Bundle			icicle
+		)
+		{
+        super.onCreate( icicle);
 
-    }
+        setContentView( R.layout.main);
+		}  // _____________________________________________
 
-}
+	}  // =================================================
+
+
+// vim: ts=4 sw=4
+// *** EOF ***
