@@ -8,7 +8,7 @@
     <TextView
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:text="This space for rent!  Offer good until I forget"
+        android:text="Poke things, already!"
 		android:padding="3mm"
 	/>
 	<Button
@@ -17,6 +17,20 @@
 		android:text="Click me!"
 		android:padding="3mm"
 	/>
+	<SeekBar
+		android:layout_height="wrap_content"
+		android:layout_width="fill_parent"
+		android:max="7"
+		android:progress="0"
+		android:padding="3mm"
+	/>
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+		android:background="#DDDDDD"
+		android:textColor="#222222"
+        android:text="TODO:  update text in response to controls"
+		android:padding="3mm"
 	/>
 </LinearLayout>
 <!--
