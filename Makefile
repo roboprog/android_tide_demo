@@ -3,11 +3,29 @@ default:
 
 # ======= macros ======= 
 
+APP_SRC_PKG=src/com/roboprogs/adhd
+
 # ======= targets ======= 
 
 clean:
-	rm -rf build
-	rm -rf dist
+	rm -rf build/classes/*
+	rm -rf dist/*
+
+# mk_bld_dirs:
+#	mkdir -m 770 -p dist
+#	mkdir -m 770 -p build/classes
+
+$(APP_SRC_PKG)/R.java : AndroidManifest.xml \
+		res/layout/main.xml \
+		res/values/strings.xml
+	aapt p \
+		-f \
+		-v \
+		-M AndroidManifest.xml \
+		-F ./build/resources.res \
+		-I ~/system/classes/android.jar \
+		-S res/ \
+		-J $(APP_SRC_PKG)
 
 install:
 	# rm /sdcard/adhd_signed.apk
