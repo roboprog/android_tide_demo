@@ -36,6 +36,16 @@ $(APP_CLS_PKG)/MainActivity.class : $(APP_SRC_PKG)/*.java
 		-d ../build/classes \
 		com/roboprogs/adhd/*.java )
 
+build/adhd.dex : $(APP_CLS_PKG)/*.class
+	# jvm/class to dex conversion
+	( cd build/classes ; \
+	dx --dex \
+		--verbose \
+		--no-strict \
+		--output=../adhd.dex \
+		com \
+		../../libs/demolib.jar )
+
 install:
 	# rm /sdcard/adhd_signed.apk
 	# put self signed android package on "SD Card"
