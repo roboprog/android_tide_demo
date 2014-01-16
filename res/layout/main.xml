@@ -19,6 +19,7 @@
 		android:onClick="countClicks"
 	/>
 	<SeekBar
+		android:id="@+id/busy_seek"
 		android:layout_height="wrap_content"
 		android:layout_width="fill_parent"
 		android:max="7"
