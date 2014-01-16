@@ -1,5 +1,7 @@
-default:
-	echo  TODO
+default: build
+
+# note that install will prompt to run, anyway
+all: clean build install # run
 
 # ======= macros ======= 
 
@@ -19,6 +21,8 @@ clean:
 	rm -f build/*.*  # avoid carping about subdir
 	rm -rf dist/*
 	rm -f $(APP_SRC_PKG)/R.java
+
+build: dist/adhd_signed.apk
 
 # mk_bld_dirs:
 #	mkdir -m 770 -p dist
@@ -64,6 +68,10 @@ dist/adhd.apk : build/adhd.dex \
 		-u \
 		-z build/resources.res \
 		-f build/adhd.dex 
+
+dist/adhd_signed.apk : dist/adhd.apk
+	( cd dist ; \
+	signer adhd.apk adhd_signed.apk )
 
 install:
 	# rm /sdcard/adhd_signed.apk
