@@ -3,15 +3,22 @@ default:
 
 # ======= macros ======= 
 
+# directory for the Java files
 APP_SRC_PKG=src/com/roboprogs/adhd
+
+# directory for the class files
 APP_CLS_PKG=build/classes/com/roboprogs/adhd
+
+# sample class file (all built at same time)
+SAMPLE_CLASS=$(APP_CLS_PKG)/MainActivity.class
 
 # ======= targets ======= 
 
 clean:
 	rm -rf build/classes/*
+	rm -f build/*.*  # avoid carping about subdir
 	rm -rf dist/*
-	rm $(APP_SRC_PKG)/R.java
+	rm -f $(APP_SRC_PKG)/R.java
 
 # mk_bld_dirs:
 #	mkdir -m 770 -p dist
@@ -29,15 +36,16 @@ $(APP_SRC_PKG)/R.java : AndroidManifest.xml \
 		-S res/ \
 		-J $(APP_SRC_PKG)
 
-$(APP_CLS_PKG)/MainActivity.class : $(APP_SRC_PKG)/*.java
+$(SAMPLE_CLASS) : $(APP_SRC_PKG)/*.java \
+		$(APP_SRC_PKG)/R.java
 	( cd src ; \
 	javac -verbose \
 		-cp ../libs/demolib.jar \
 		-d ../build/classes \
 		com/roboprogs/adhd/*.java )
 
-build/adhd.dex : $(APP_CLS_PKG)/*.class
-	# jvm/class to dex conversion
+build/adhd.dex : $(SAMPLE_CLASS)
+	# jvm/class to dex ('droid executable) conversion
 	( cd build/classes ; \
 	dx --dex \
 		--verbose \
@@ -45,6 +53,17 @@ build/adhd.dex : $(APP_CLS_PKG)/*.class
 		--output=../adhd.dex \
 		com \
 		../../libs/demolib.jar )
+
+dist/adhd.apk : build/adhd.dex \
+		build/resources.res \
+		$(APP_SRC_PKG)/R.java
+	# android packager
+	apkbuilder \
+		dist/adhd.apk \
+		-v \
+		-u \
+		-z build/resources.res \
+		-f build/adhd.dex 
 
 install:
 	# rm /sdcard/adhd_signed.apk
