@@ -73,7 +73,7 @@ dist/adhd_signed.apk : dist/adhd.apk
 	( cd dist ; \
 	signer adhd.apk adhd_signed.apk )
 
-install:
+install: build
 	# rm /sdcard/adhd_signed.apk
 	# put self signed android package on "SD Card"
 	cp -f ./dist/adhd_signed.apk /sdcard/
