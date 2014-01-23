@@ -109,15 +109,26 @@ class					MainActivity
 	void				updateStatus()
 		{
 		TextView		text;
+		int				alpha;
+		int				r;
+		int				g;
+		int				b;
+		int				color;
 
 		text = (TextView) findViewById( R.id.busy_text);
+		r = ( ( this.sliderPos & 0x04) >> 2);
+		g = ( ( this.sliderPos & 0x02) >> 1);
+		b = ( this.sliderPos & 0x01);
+		alpha = 0x77000000;
+		color = alpha + ( r * 0xaa0000) + ( g * 0x00aa00) + ( b * 0x0000aa);
+		text.setTextColor( color);
 		text.setText( "Click count: " + this.btnClicks +
-				", Pos " + this.sliderPos +
-				", Seeker = " + this.seeker);
+				", Pos: " + this.sliderPos);
 		}  // _____________________________________________
 
 	/**
 	 * Spout a log mmessage.
+	 *  TODO: copy the text into a scrolling text box control, as well.
 	 */
 	private
 	void				info
