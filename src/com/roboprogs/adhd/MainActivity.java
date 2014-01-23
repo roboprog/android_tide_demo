@@ -44,17 +44,21 @@ class					MainActivity
 		{
         super.onCreate( icicle);
 
+		info( "About to create something");
+        setContentView( R.layout.main);
+		wireEvents();
+		}  // _____________________________________________
+
+	/**
+	 * Set up event handlers for screen controls
+	 */
+	private
+	void				wireEvents()
+		{
 		SeekBar.OnSeekBarChangeListener
 						seekHandler;
 
-		info( "About to create something");
-
-        setContentView( R.layout.main);
-
-		// *now* try wiriing up even handlers
-
 		this.seeker = (SeekBar) findViewById( R.id.busy_seek);
-
 		seekHandler = new SeekBar.OnSeekBarChangeListener()
 			{
 
@@ -69,10 +73,8 @@ class					MainActivity
 				boolean fromUser
 				)
 				{
-/*
 				MainActivity.this.sliderPos = progress;
 				updateStatus();
-*/
 				}  // _____________________________________
 
 			public
@@ -83,8 +85,7 @@ class					MainActivity
 				{}
 			} ;  // =======================================
 
-		// this.seeker.setOnSeekBarChangeListener( seekHandler);
-
+		this.seeker.setOnSeekBarChangeListener( seekHandler);
 		}  // _____________________________________________
 
 	/**
@@ -104,7 +105,7 @@ class					MainActivity
 	/**
 	 * Update status text at bottomm of Busy-Box.
 	 */
-	public
+	private
 	void				updateStatus()
 		{
 		TextView		text;
@@ -118,7 +119,7 @@ class					MainActivity
 	/**
 	 * Spout a log mmessage.
 	 */
-	public
+	private
 	void				info
 		(
 		String			msg
