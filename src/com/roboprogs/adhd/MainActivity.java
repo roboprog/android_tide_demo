@@ -49,6 +49,10 @@ class					MainActivity
 
 		info( "About to create something");
 
+        setContentView( R.layout.main);
+
+		// *now* try wiriing up even handlers
+
 		this.seeker = (SeekBar) findViewById( R.id.busy_seek);
 
 		seekHandler = new SeekBar.OnSeekBarChangeListener()
@@ -81,7 +85,6 @@ class					MainActivity
 
 		// this.seeker.setOnSeekBarChangeListener( seekHandler);
 
-        setContentView( R.layout.main);
 		}  // _____________________________________________
 
 	/**
