@@ -34,6 +34,14 @@ class					MainActivity
 	private
 	int					sliderPos = 0;
 
+	/** handle to logging panel */
+	private
+	TextView			logBox;
+
+	/** accumulated log (emulation) text */
+	private
+	String				logText = "";
+
     /** Called when the activity is first created. */
     @Override
     public
@@ -44,9 +52,9 @@ class					MainActivity
 		{
         super.onCreate( icicle);
 
-		info( "About to create something");
         setContentView( R.layout.main);
 		wireEvents();
+		info( "Event handlers in place");
 		}  // _____________________________________________
 
 	/**
@@ -58,6 +66,7 @@ class					MainActivity
 		SeekBar.OnSeekBarChangeListener
 						seekHandler;
 
+		this.logBox = (TextView) findViewById( R.id.busy_log);
 		this.seeker = (SeekBar) findViewById( R.id.busy_seek);
 		seekHandler = new SeekBar.OnSeekBarChangeListener()
 			{
@@ -73,6 +82,7 @@ class					MainActivity
 				boolean fromUser
 				)
 				{
+				info( "slider moved");
 				MainActivity.this.sliderPos = progress;
 				updateStatus();
 				}  // _____________________________________
@@ -98,6 +108,7 @@ class					MainActivity
 		View			unused
 		)
 		{
+		info( "button clicked");
 		this.btnClicks++;
 		updateStatus();
 		}  // _____________________________________________
@@ -115,6 +126,7 @@ class					MainActivity
 		int				b;
 		int				color;
 
+		this.logBox.setText( this.logText);
 		text = (TextView) findViewById( R.id.busy_text);
 		r = ( ( this.sliderPos & 0x04) >> 2);
 		g = ( ( this.sliderPos & 0x02) >> 1);
@@ -137,6 +149,13 @@ class					MainActivity
 		)
 		{
 		Log.i( MainActivity.class.getName(), msg);
+
+		// adb + logcat display other activity, but not our msgs,
+		//  so implement a workaround
+		// (newest on top, so don't have to scroll down)
+		this.logText = ( "I) " + msg + "\n" + this.logText);
+		// TODO: timestamp
+		updateStatus();
 		}  // _____________________________________________
 
 	}  // =================================================

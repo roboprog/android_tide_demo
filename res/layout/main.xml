@@ -35,6 +35,16 @@
         android:text="TODO:  update text in response to controls"
 		android:padding="3mm"
 	/>
+	<!-- panel for messages to emulate logging -->
+    <TextView
+		android:id="@+id/busy_log"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+		android:background="#111111"
+		android:textColor="#00EE00"
+        android:text=""
+		android:padding="3mm"
+	/>
 </LinearLayout>
 <!--
 vim: ts=4 sw=4
