@@ -7,8 +7,9 @@ package com.roboprogs.adhd;
 
 import android.app.Activity;
 import android.media.MediaPlayer;
-import android.provider.Settings;
+import android.net.Uri;
 import android.os.Bundle;
+import android.provider.Settings;
 import android.util.Log;
 import android.view.View;
 import android.widget.SeekBar;
@@ -43,6 +44,10 @@ class					MainActivity
 	/** accumulated log (emulation) text */
 	private
 	String				logText = "";
+
+	/** media player instance to manage for noises */
+	private
+	MediaPlayer			player;
 
     /** Called when the activity is first created. */
     @Override
@@ -85,6 +90,7 @@ class					MainActivity
 				)
 				{
 				info( "slider moved");
+				play( Settings.System.DEFAULT_NOTIFICATION_URI);
 				MainActivity.this.sliderPos = progress;
 				updateStatus();
 				}  // _____________________________________
@@ -111,6 +117,8 @@ class					MainActivity
 		)
 		{
 		info( "button clicked");
+		// play( Settings.System.DEFAULT_RINGTONE_URI);
+		play( Settings.System.DEFAULT_ALARM_ALERT_URI);
 		this.btnClicks++;
 		updateStatus();
 		}  // _____________________________________________
@@ -127,7 +135,6 @@ class					MainActivity
 		int				g;
 		int				b;
 		int				color;
-		MediaPlayer		player;
 
 		this.logBox.setText( this.logText);
 		text = (TextView) findViewById( R.id.busy_text);
@@ -139,10 +146,24 @@ class					MainActivity
 		text.setTextColor( color);
 		text.setText( "Click count: " + this.btnClicks +
 				", Pos: " + this.sliderPos);
+		}  // _____________________________________________
 
-		player = MediaPlayer.create( this,
-				Settings.System.DEFAULT_NOTIFICATION_URI);
-		player.start();
+	/**
+	 * Play a sound.
+	 */
+	private
+	void				play
+		(
+		Uri				resource
+		)
+		{
+		if ( this.player != null)
+			{
+			this.player.reset();
+			}   // previous instance set up?
+		// else:  nothing to clean up
+		this.player = MediaPlayer.create( this, resource);
+		this.player.start();
 		}  // _____________________________________________
 
 	/**
