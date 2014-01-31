@@ -6,6 +6,8 @@
 package com.roboprogs.adhd;
 
 import android.app.Activity;
+import android.media.MediaPlayer;
+import android.provider.Settings;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -125,6 +127,7 @@ class					MainActivity
 		int				g;
 		int				b;
 		int				color;
+		MediaPlayer		player;
 
 		this.logBox.setText( this.logText);
 		text = (TextView) findViewById( R.id.busy_text);
@@ -136,6 +139,10 @@ class					MainActivity
 		text.setTextColor( color);
 		text.setText( "Click count: " + this.btnClicks +
 				", Pos: " + this.sliderPos);
+
+		player = MediaPlayer.create( this,
+				Settings.System.DEFAULT_NOTIFICATION_URI);
+		player.start();
 		}  // _____________________________________________
 
 	/**
