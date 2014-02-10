@@ -39,7 +39,8 @@ do the work on).</P>
 <P STYLE="margin-bottom: 0in"><BR>
 </P>
 <P STYLE="margin-bottom: 0in">Some Android devices, such as the Nexus
-7, come with a dual purpose USB port that lets the tablet act as the
+7, come with a dual purpose USB port (&quot;On The Go&quot; - OTG)
+that lets the tablet act as the
 computer, as well as as a peripheral.  This allows you to hook up a
 keyboard, mouse, or a game controller to the tablet.  Almost all
 support bluetooth, so you can attach an external keyboard, or mouse,
@@ -71,10 +72,50 @@ chose to make a slightly longer Java/Android program, and to use
 “make” instead of separate scripts.</P>
 <P STYLE="margin-bottom: 0in"><BR>
 </P>
-<P STYLE="margin-bottom: 0in">….</P>
+<P STYLE="margin-bottom: 0in">
+By default, I have the Makefile set up to build a signed Android package, and stop.
+However, there are also &quot;install&quot; and &quot;run&quot; targets as well.
+The Android installer will prompt you to run the app if  the install is successful,
+so  &quot;make install&quot; will do everything you need to compile, install and run.
+</P>
+<P STYLE="margin-bottom: 0in">
+</P>
+<P STYLE="margin-bottom: 0in">
+Runing the build and install process as described above, you will see the following run:
+</P>
+<UL>
+	<LI>
+	aapt - generate binary version of resources and a source code file with reference IDs.
+	</LI>
+	<LI>
+	javac - a Dalvik port of the Java compiler to generate Java .class files.
+	</LI>
+	<LI>
+	dx - convert .class and .jar files to .dex format.
+	</LI>
+	<LI>
+	apkbuilder - generate an (unsigned) Android package, .apk,
+	from the .dex and resource files.
+	</LI>
+	<LI>
+	signer - generate signed .apk from unsigned .apk.
+	</LI>
+	<LI>
+	am - install and run the signed .apk copied to the &quot;SD card&quot;.
+	</LI>
+</UL>
+<P STYLE="margin-bottom: 0in"><BR>
+TODO: discuss vim and tags
+</P>
 <P STYLE="margin-bottom: 0in"><BR>
 </P>
 <P STYLE="margin-bottom: 0in"><BR>
+TODO: discuss ssh
+</P>
+<P STYLE="margin-bottom: 0in"><BR>
+</P>
+<P STYLE="margin-bottom: 0in"><BR>
+TODO: discuss git and sync
 </P>
 <P STYLE="margin-bottom: 0in"><BR>
 </P>
