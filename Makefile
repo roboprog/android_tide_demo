@@ -16,7 +16,11 @@ SAMPLE_CLASS=$(APP_CLS_PKG)/MainActivity.class
 
 # ======= targets ======= 
 
+tags: $(APP_SRC_PKG)/*.java
+	ctags $(APP_SRC_PKG)/*.java
+
 clean:
+	rm -f tags
 	rm -rf build/classes/*
 	rm -f build/*.*  # avoid carping about subdir
 	rm -rf dist/*
@@ -42,7 +46,7 @@ $(APP_SRC_PKG)/R.java : AndroidManifest.xml \
 
 $(SAMPLE_CLASS) : $(APP_SRC_PKG)/*.java \
 		$(APP_SRC_PKG)/R.java
-	mkdir -p build/classes
+	mkdir -m 770 -p build/classes
 	( cd src ; \
 	javac -verbose \
 		-cp ../libs/demolib.jar \
@@ -62,6 +66,7 @@ build/adhd.dex : $(SAMPLE_CLASS)
 dist/adhd.apk : build/adhd.dex \
 		build/resources.res \
 		$(APP_SRC_PKG)/R.java
+	mkdir -m 770 -p dist
 	# android packager
 	apkbuilder \
 		dist/adhd.apk \
