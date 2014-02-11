@@ -105,7 +105,19 @@ Runing the build and install process as described above, you will see the follow
 	</LI>
 </UL>
 <P STYLE="margin-bottom: 0in"><BR>
-TODO: discuss vim and tags
+The app comes with the &quot;vim&quot; editor,
+which is an enhanced version of the old Unix vi editor.
+This is not an easy editor to learn, as it uses single char commands,
+or stacks of such commands, and has several modes.
+If you know it, it is very fast.  If not, it is painful to learn.
+(as the saying goes, Unix <i>is</i> user friendly, it's just choosy about who its friends are)
+The editor is configured with a rudimentary auto-complete feature,
+but it is only matching against prefixes of symbols already in use in the current edit session.
+However, the ctags utility is included, which, contrary to the name,
+can also build a tags file (symbol table) from Java code as well as C code.
+Once you have made the tags file,
+putting the cursor on a symbol and pressing Ctrl-] will take you to the symbol definition.
+Pressing Ctrl-T will pop you back off the tag stack.
 </P>
 <P STYLE="margin-bottom: 0in"><BR>
 </P>
